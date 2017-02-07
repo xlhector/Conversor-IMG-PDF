@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ConversorImgPdf {
     
-    private boolean globalReduction = false;
+    private boolean individualReduction = false;
     private int reduction;
     private Object [] reductionValues = {0,10,20,30,40,50,60,70,80};
     private String currentPath;
@@ -71,7 +71,7 @@ public class ConversorImgPdf {
         if (paths.length>1){
             CheckGlobalReduction();
         }
-        if(!this.globalReduction){
+        if(!this.individualReduction){
             this.currentPath = paths[0];
             getReduction();
         }
@@ -91,7 +91,7 @@ public class ConversorImgPdf {
             String input     = path; // .gif and .jpg are ok too!
             System.out.println(path);
             try {
-                if (this.globalReduction){
+                if (this.individualReduction){
                     getReduction();
                 }
                 
@@ -145,7 +145,7 @@ public class ConversorImgPdf {
         int result = JOptionPane.showConfirmDialog(null, "Requiere reducción individual de imagenes?");
         
         if (result == 0){
-            this.globalReduction = true;
+            this.individualReduction = true;
         }
         if (result == 2){
             System.exit(0);
